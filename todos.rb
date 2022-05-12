@@ -3,13 +3,13 @@ todos = [
   { "id" => 2, "content" => "Complete Ruby Basics 1", "completed" => false },
   { "id" => 3, "content" => "Complete Ruby Basics 2", "completed" => false },
   { "id" => 4, "content" => "Complete Ruby Methods", "completed" => false },
-  { "id" => 5, "content" => "Do meditation", "completed" => false }
+  { "id" => 5, "content" => "Do meditation", "completed" => true }
 ]
 
-def list_todos(todos)
+def list_todos(todos, completed = false)
   puts "------------------------Welcome to toDOS------------------------"
   todos.each do |todo|
-    puts "#{todo['id']}. #{todo['content']}"
+    puts "#{todo['id']}. #{todo['content']}" if todo["completed"] == completed
   end
 end
 
@@ -37,14 +37,18 @@ while action != "exit"
   print "action: "
   action = gets.chomp
   case action
+  when "list"
+    list_todos(todos)
+    print_menu
+  when "completed"
+    list_todos(todos, true)
+    print_menu
   when "add"
     print "content: "
     content = gets.chomp
     id = todos.size + 1
     create_todo(todos, id, content)
     print_menu
-  when "list" then puts "LIST"
-  when "completed" then puts "COMPLETED"
   when "toggle" then puts "TOGGLE"
   when "delete" then puts "DELETE"
   end
