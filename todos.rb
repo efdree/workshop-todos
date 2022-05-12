@@ -20,6 +20,18 @@ def print_menu
 end
 
 # Main program
-
 list_todos(todos)
 print_menu
+action = nil
+while action != "exit"
+  print "action: "
+  action = gets.chomp
+  case action
+  when "add" then puts "ADD"
+  when "list" then puts "LIST"
+  when "completed" then puts "COMPLETED"
+  when "toggle" then puts "TOGGLE"
+  when "delete" then puts "DELETE"
+  end
+end
+puts "Thanks for using toDOS!"
