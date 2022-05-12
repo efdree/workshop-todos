@@ -19,6 +19,16 @@ def print_menu
   puts "\n"
 end
 
+def create_todo(todos, id, content)
+  new_todo = {
+    "id" => id,
+    "content" => content,
+    "completed" => false
+  }
+  # todos.push(new_todo)
+  todos << new_todo
+end
+
 # Main program
 list_todos(todos)
 print_menu
@@ -27,7 +37,12 @@ while action != "exit"
   print "action: "
   action = gets.chomp
   case action
-  when "add" then puts "ADD"
+  when "add"
+    print "content: "
+    content = gets.chomp
+    id = todos.size + 1
+    create_todo(todos, id, content)
+    print_menu
   when "list" then puts "LIST"
   when "completed" then puts "COMPLETED"
   when "toggle" then puts "TOGGLE"
