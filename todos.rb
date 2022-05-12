@@ -13,6 +13,13 @@ def list_todos(todos)
   end
 end
 
+def print_menu
+  puts "-" * 64
+  puts "add | list | completed | toggle | delete | exit"
+  puts "\n"
+end
+
 # Main program
 
 list_todos(todos)
+print_menu
